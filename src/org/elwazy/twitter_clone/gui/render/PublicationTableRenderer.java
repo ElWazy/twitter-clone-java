@@ -62,15 +62,17 @@ public class PublicationTableRenderer extends JLabel implements TableCellRendere
                 // Aqui sucede la magia
                 String hashtagsNames = "";
                 List<HashtagPublication> hashtagsByPublication = daoHashtagPublication.getHastagsByPublication(publicationId);
+                List<Hashtag> hashtags = new ArrayList<>();
                 if ( hashtagsByPublication != null ) {
-                    List<Hashtag> hashtags = new ArrayList<>();
-                    for (HashtagPublication hashtagPublication : hashtagsByPublication) {
-                        Hashtag hashtag = daoHashtag.getById(hashtagPublication.getHashtag_id_fk());
-                        hashtags.add(hashtag);
-                    }
+                    if ( hashtagsByPublication.get(0).getHashtag_id_fk() != 0 ) {
+                        for (HashtagPublication hashtagPublication : hashtagsByPublication) {
+                            Hashtag hashtag = daoHashtag.getById(hashtagPublication.getHashtag_id_fk());
+                            hashtags.add(hashtag);
+                        }
 
-                    for (Hashtag hashtag : hashtags) {
-                        hashtagsNames += hashtag.getName() + ", ";
+                        for (Hashtag hashtag : hashtags) {
+                            hashtagsNames += hashtag.getName() + ", ";
+                        }
                     }
                 }
 
