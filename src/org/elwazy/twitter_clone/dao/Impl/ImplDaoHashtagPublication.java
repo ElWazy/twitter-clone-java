@@ -129,7 +129,7 @@ public class ImplDaoHashtagPublication extends AbstractDbConnection implements D
 
     @Override
     public int delete(int id) {
-        String sql = "DELETE FROM hashtag_publication WHERE id = ?";
+        String sql = "DELETE FROM hashtag_publication WHERE publication_id_fk = ?";
         int rowsAffected = 0;
 
         try (PreparedStatement ps = connection.getConnection().prepareStatement(sql)) {

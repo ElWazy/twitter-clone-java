@@ -3,7 +3,6 @@ package org.elwazy.twitter_clone.gui.models;
 import org.elwazy.twitter_clone.models.HashtagPublication;
 
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
 import java.util.List;
 
 public class PublicationsTableModel extends AbstractTableModel {
